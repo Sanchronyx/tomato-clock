@@ -1,98 +1,222 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-    background: linear-gradient(to bottom right, #fff8f0, #ffe3e3);
+    background: linear-gradient(145deg, #fff8f0, #ffe3e3);
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .heading {
-    font-size: 3em;
-    margin-top: 30px;
+    font-size: 2.4em;
+    margin: 20px 0 5px;
     color: #e74c3c;
 }
 
 #pomodoro-count {
-    font-size: 1.5em;
-    margin: 10px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
     color: #333;
 }
 
 #tomato-timer {
-    margin: 20px auto;
+    margin: 10px auto;
     display: block;
     cursor: pointer;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+    transition: transform 0.2s ease;
+    max-width: 200px;
 }
-
-#controls button {
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 1em;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+#tomato-timer:hover {
+    transform: scale(1.03);
 }
-
-#controls button:hover {
-    background-color: #388e3c;
-}
-
 #tomato-ring {
     transition: stroke-dashoffset 1s linear;
 }
 
-/* Modal Styling */
+#time-info {
+    margin-top: 5px;
+    font-size: 1em;
+    color: #555;
+}
+#time-info p {
+    margin: 4px 0;
+}
+
+#controls {
+    margin-top: 15px;
+}
+#controls button {
+    padding: 10px 16px;
+    margin: 4px;
+    font-size: 0.95em;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+#controls button:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
 .modal {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 1000;
 }
-
 .modal.hidden {
     display: none;
 }
-
 .modal-content {
     background: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     text-align: center;
+    width: 90%;
+    max-width: 320px;
+}
+.modal-content label {
+    font-weight: bold;
+}
+.modal-content input {
+    margin: 5px;
+    padding: 8px;
+    font-size: 0.95em;
+    width: 80px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+    font-size: 0.95em;
+    text-align: left;
+    width: 100%;
 }
 
 .modal-content input {
-    margin: 10px;
+    width: 100%;
+    max-width: 200px;
     padding: 10px;
-    font-size: 1em;
-    width: 80px;
-    border-radius: 5px;
     border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
 }
 
 .modal-buttons {
     margin-top: 15px;
 }
-
 .modal-buttons button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #e74c3c;
+    margin: 0 6px;
+    padding: 8px 16px;
+    font-size: 0.95em;
+    background-color: #3498db;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
-
 .modal-buttons button:hover {
-    background-color: #c0392b;
+    background-color: #2980b9;
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.input-row label {
+    font-weight: bold;
+    font-size: 0.95em;
+    margin-right: 10px;
+    min-width: 90px;
+    text-align: right;
+}
+
+.input-row input {
+    flex: 1;
+    padding: 8px;
+    font-size: 1em;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    min-width: 140px;  /* 💡 ADD THIS */
+    max-width: 220px;  /* 💡 OPTIONAL: widen the max */
+}
+
+#menu-bar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1em;
+    z-index: 1001;
+}
+.menu-button {
+    background: #e74c3c;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.dropdown {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    width: 150px;
+    position: absolute;
+    top: 35px;
+    left: 0;
+}
+.dropdown.hidden {
+    display: none;
+}
+.dropdown-option, .dropdown-section {
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+.dropdown-option:hover {
+    background: #f5f5f5;
+}
+.dropdown-section {
+    font-weight: bold;
+    color: #555;
+    cursor: default;
+}
+
+@media (max-width: 400px) {
+    #controls button,
+    .modal-buttons button {
+        font-size: 0.85em;
+        padding: 8px 14px;
+    }
+    .modal-content input {
+        width: 70px;
+    }
 }

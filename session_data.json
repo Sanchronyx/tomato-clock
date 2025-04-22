@@ -1,0 +1,20 @@
+{
+    "sessions": [
+        {
+            "start_time": "2025-04-22T18:06:31.613Z",
+            "end_time": "2025-04-22T18:07:31.613Z",
+            "mode": "rest"
+        },
+        {
+            "start_time": "2025-04-22T18:07:32.618Z",
+            "end_time": "2025-04-22T18:08:32.618Z",
+            "mode": "work"
+        },
+        {
+            "start_time": "2025-04-22T18:08:33.623Z",
+            "end_time": "2025-04-22T18:09:33.623Z",
+            "mode": "rest"
+        }
+    ],
+    "total_pomodoros": 1
+}
