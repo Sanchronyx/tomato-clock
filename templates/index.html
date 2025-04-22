@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tomato Clock</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"></link>
+    </head>
+    <body>
+        <h1 class="heading"> Tomato Clock </h1>
+        <div id="timer">50:00</div>
+        <div id="clock"></div>
+        <div id="button_layout">
+            <input class="button" type="text" id="work" placeholder="Work (mins)" value="50:00">
+            <input class="button" type="text" id="work" placeholder="Rest (mins)" value="10:00">
+        </div>    
+        <button onclick="startTimer()">Start</button>
+        <button onclick="stopTimer()">Stop</button>
+        <script src="{{ url_for('static', filename='timer.js') }}"></script>
+    </body>
+</html>
