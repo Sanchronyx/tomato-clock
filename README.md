@@ -8,8 +8,6 @@ Basic Pomodoro App
 4. Set the time (mins) you want to rest
 5. Enjoy
 
-   
-<br>
 # ___________________________________________________________________________
 # 番茄鐘
 基本番茄鐘軟體
