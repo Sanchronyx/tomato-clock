@@ -1,7 +1,7 @@
 # Tomato Clock
 Basic Pomodoro App
 
-# INSTRUCTIONS
+# Instructions
 1. Open the app
 2. Click on the tomato
 3. Set the time (mins) you want to study
