@@ -1,7 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    background-color: #fffaf6;
+    background: linear-gradient(to bottom right, #fff8f0, #ffe3e3);
     margin: 0;
     padding: 0;
 }
@@ -21,22 +21,8 @@ body {
 #tomato-timer {
     margin: 20px auto;
     display: block;
-}
-
-#button_layout {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px;
-}
-
-.input {
-    padding: 10px;
-    font-size: 1.2em;
-    width: 120px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    text-align: center;
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
 }
 
 #controls button {
@@ -48,6 +34,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 #controls button:hover {
@@ -56,4 +43,56 @@ body {
 
 #tomato-ring {
     transition: stroke-dashoffset 1s linear;
+}
+
+/* Modal Styling */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal-content input {
+    margin: 10px;
+    padding: 10px;
+    font-size: 1em;
+    width: 80px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.modal-buttons {
+    margin-top: 15px;
+}
+
+.modal-buttons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-buttons button:hover {
+    background-color: #c0392b;
 }

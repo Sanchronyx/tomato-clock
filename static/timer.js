@@ -3,8 +3,30 @@ let timeRemaining = 0;
 let isPaused = false;
 let initialWorkTime = 0;
 let initialRestTime = 0;
-let mode = "work"; // "work" or "rest"
+let mode = "work";
 let pomodoroCount = 0;
+
+function openModal() {
+    document.getElementById("modal").classList.remove("hidden");
+}
+
+function closeModal() {
+    document.getElementById("modal").classList.add("hidden");
+}
+
+function setTimerValues() {
+    const workMins = parseInt(document.getElementById("modal-work").value);
+    const restMins = parseInt(document.getElementById("modal-rest").value);
+
+    if (!workMins || !restMins) return alert("Please enter valid times!");
+
+    initialWorkTime = workMins * 60;
+    initialRestTime = restMins * 60;
+    timeRemaining = initialWorkTime;
+
+    closeModal();
+    startTimer();
+}
 
 function startTimer() {
     if (isPaused) {
@@ -13,13 +35,7 @@ function startTimer() {
         return;
     }
 
-    const workInput = document.getElementById("work").value;
-    const restInput = document.getElementById("rest").value;
-
-    initialWorkTime = parseInt(workInput.split(":")[0]) * 60 || 1500;
-    initialRestTime = parseInt(restInput.split(":")[0]) * 60 || 300;
-
-    timeRemaining = mode === "work" ? initialWorkTime : initialRestTime;
+    if (timeRemaining === 0) return openModal();
 
     runCountdown();
 }
@@ -38,7 +54,6 @@ function runCountdown() {
         let timeString = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         text.textContent = timeString;
 
-        // Animate ring
         let percent = timeRemaining / totalTime;
         ring.style.strokeDashoffset = circleLength * (1 - percent);
 
@@ -59,6 +74,7 @@ function runCountdown() {
 
             document.getElementById("pomodoro-count").textContent =
                 `Pomodoros Completed: ${pomodoroCount}`;
+            timeRemaining = mode === "work" ? initialWorkTime : initialRestTime;
             startTimer();
         }
     }, 1000);
